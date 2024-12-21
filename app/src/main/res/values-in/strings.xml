@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dicoding Story App</string>
+    <string name="login">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="next">Berikutnya</string>
+    <string name="user">Pengguna</string>
+    <string name="error">Kesalahan: %1$s</string>
+    <string name="title_home">Beranda</string>
+    <string name="language">Bahasa</string>
+    <string name="language_desc">Ubah bahasa aplikasi</string>
+    <string name="logout">Keluar</string>
+
+    <string name="gallery">Galeri</string>
+    <string name="camera">Kamera</string>
+
+    <string name="cd_design1">Desain 1</string>
+    <string name="cd_design2">Desain 2</string>
+    <string name="cd_button_back">Tombol Kembali</string>
+    <string name="cd_image_story">Gambar Cerita</string>
+    <string name="cd_setting">Pengaturan</string>
+    <string name="cd_design_top_main">Desain atas utama</string>
+    <string name="cd_add_story">Tombol Tambah Cerita</string>
+    <string name="cd_logout_icon">Keluar</string>
+    <string name="cd_change_language">Ubah bahasa</string>
+
+    <string name="tv_start">Bagikan cerita Anda</string>
+    <string name="tv_start2">dengan</string>
+    <string name="tv_start3">Dicoding Indonesia</string>
+    <string name="tv_login_greeting">Selamat Datang Kembali!</string>
+    <string name="tv_register_greeting">Selamat Datang!</string>
+    <string name="tv_register_desc">Mari berbagi cerita Anda di sini</string>
+    <string name="tv_title_apps">Cerita</string>
+    <string name="tv_title_add_story">Tambah Cerita</string>
+    <string name="tv_upload">Unggah</string>
+    <string name="tv_hint_description">Tambahkan deskripsi...</string>
+    <string name="tv_detail_story">Detail Cerita</string>
+
+    <string name="usernameEt">Masukkan nama pengguna Anda</string>
+    <string name="emailEt">Masukkan email Anda</string>
+    <string name="passwordEt">Masukkan kata sandi Anda</string>
+
+    <string name="msg_empty_image">Harap masukkan gambar Anda</string>
+    <string name="msg_empty_description">Harap tulis deskripsi Anda</string>
+    <string name="msg_upload_success">Unggah berhasil!</string>
+    <string name="msg_upload_error">Unggah gagal!</string>
+    <string name="msg_register_success">Selamat! Akun Anda sekarang aktif. Mari berbagi cerita!</string>
+    <string name="msg_title_register_success">Anda sudah masuk!</string>
+    <string name="msg_error_failed">Ups! Terjadi kesalahan</string>
+    <string name="msg_register_failed">Pendaftaran Gagal!</string>
+    <string name="msg_title_login_success">Selamat Datang Kembali!</string>
+    <string name="msg_login_success">Selamat datang, %1$s!</string>
+    <string name="msg_login_failed">Login Gagal!</string>
+    <string name="msg_error_password_too_short">Kata sandi harus terdiri dari setidaknya 8 karakter</string>
+    <string name="msg_error_invalid_email">Email tidak valid</string>
+
+    <string name="permission_request_granted">Permintaan izin disetujui</string>
+    <string name="permission_request_denied">Permintaan izin ditolak</string>
+</resources>

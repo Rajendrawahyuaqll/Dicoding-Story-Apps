@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">Dicoding Story App</string>
+
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="next">Next</string>
+    <string name="user">User</string>
+    <string name="error">Error: %1$s</string>
+    <string name="title_home">Home</string>
+    <string name="language">Language</string>
+    <string name="language_desc">Change apps language</string>
+    <string name="logout">Logout</string>
+
+    <string name="gallery">Gallery</string>
+    <string name="camera">Camera</string>
+
+    <string name="cd_design1">Design 1</string>
+    <string name="cd_design2">Design 2</string>
+    <string name="cd_button_back">Button back</string>
+    <string name="cd_image_story">Image Story</string>
+    <string name="cd_setting">Settings</string>
+    <string name="cd_design_top_main">Design top main</string>
+    <string name="cd_add_story">Button Add Story</string>
+    <string name="cd_logout_icon">Logout</string>
+    <string name="cd_change_language">change language</string>
+
+    <string name="tv_start">Share your story</string>
+    <string name="tv_start2">with</string>
+    <string name="tv_start3">Dicoding Indonesia</string>
+    <string name="tv_login_greeting">Welcome Back!</string>
+    <string name="tv_register_greeting">Welcome!</string>
+    <string name="tv_register_desc">Let’s share your story here</string>
+    <string name="tv_title_apps">Story</string>
+    <string name="tv_title_add_story">Add Story</string>
+    <string name="tv_upload">Upload</string>
+    <string name="tv_hint_description">Add a description...</string>
+    <string name="tv_detail_story">Detail Story</string>
+
+    <string name="usernameEt">Input your username</string>
+    <string name="emailEt">Input your email</string>
+    <string name="passwordEt">Input your password</string>
+
+    <string name="msg_empty_image">Please insert your image</string>
+    <string name="msg_empty_description">Please write your description</string>
+    <string name="msg_upload_success">Upload successfully!</string>
+    <string name="msg_upload_error">Upload Failed!</string>
+    <string name="msg_register_success">Congratulations! Your account is now active. Let share your story!</string>
+    <string name="msg_title_register_success">You are In!</string>
+    <string name="msg_error_failed">Oops! Something went wrong</string>
+    <string name="msg_register_failed">Registration Failed!</string>
+    <string name="msg_title_login_success">You are Back!</string>
+    <string name="msg_login_success">Welcome, %1$s!</string>
+    <string name="msg_login_failed">Login Failed!</string>
+    <string name="msg_error_password_too_short">Password must be at least 8 characters</string>
+    <string name="msg_error_invalid_email">Email Invalid</string>
+
+    <string name="permission_request_granted">Permission request granted</string>
+    <string name="permission_request_denied">Permission request denied</string>
+
+
+</resources>
