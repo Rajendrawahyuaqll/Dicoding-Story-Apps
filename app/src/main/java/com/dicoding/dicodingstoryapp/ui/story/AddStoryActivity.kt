@@ -19,6 +19,7 @@ import com.dicoding.dicodingstoryapp.databinding.ActivityAddStoryBinding
 import com.dicoding.dicodingstoryapp.utils.getImageUri
 import com.dicoding.dicodingstoryapp.utils.reduceFileImage
 import com.dicoding.dicodingstoryapp.utils.uriToFile
+import com.google.android.gms.location.LocationServices
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -31,37 +32,88 @@ class AddStoryActivity : AppCompatActivity() {
     }
 
     private var currentImageUri: Uri? = null
+    private var currentLat: Double? = null
+    private var currentLon: Double? = null
 
-    private val requestPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
-            if (isGranted) {
-                showToast(getString(R.string.permission_request_granted))
+    private val multiplePermissionsLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            val cameraGranted = permissions[Manifest.permission.CAMERA] ?: false
+            val locationGranted = permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false
+
+            if (cameraGranted && locationGranted) {
+                showToast(getString(R.string.all_permissions_granted))
+            } else if (cameraGranted) {
+                showToast(getString(R.string.location_permission_denied))
+            } else if (locationGranted) {
+                showToast(getString(R.string.camera_permission_denied))
             } else {
-                showToast(getString(R.string.permission_request_denied))
+                showToast(getString(R.string.all_permissions_denied))
             }
         }
 
-    private fun allPermissionsGranted() =
-        ContextCompat.checkSelfPermission(this, REQUIRED_PERMISSION) == PackageManager.PERMISSION_GRANTED
+    private fun allPermissionsGranted(): Boolean {
+        val cameraGranted = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+        val locationGranted = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        return cameraGranted && locationGranted
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddStoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if (!allPermissionsGranted()) {
+            multiplePermissionsLauncher.launch(
+                arrayOf(
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                )
+            )
+        }
+
+        binding.locationSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    getCurrentLocation()
+                } else {
+                    multiplePermissionsLauncher.launch(
+                        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
+                    )
+                }
+            } else {
+                currentLat = null
+                currentLon = null
+            }
+        }
+
+        binding = ActivityAddStoryBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         binding.btnBack.setOnClickListener {
             onBackPressed()
         }
-
-        if (!allPermissionsGranted()) {
-            requestPermissionLauncher.launch(REQUIRED_PERMISSION)
-        }
-
         binding.btnGallery.setOnClickListener { startGallery() }
         binding.btnCamera.setOnClickListener { startCamera() }
         binding.btnUploadStory.setOnClickListener { uploadImage() }
 
         setupViewModel()
+    }
+
+    private fun getCurrentLocation() {
+        val fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+        try {
+            fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
+                if (location != null) {
+                    currentLat = location.latitude
+                    currentLon = location.longitude
+                    showToast(getString(R.string.location_acquired))
+                } else {
+                    showToast(getString(R.string.location_not_found))
+                }
+            }
+        } catch (e: SecurityException) {
+            e.printStackTrace()
+        }
     }
 
     private fun showImage() {
@@ -121,7 +173,9 @@ class AddStoryActivity : AppCompatActivity() {
 
             viewModel.uploadStory(
                 description = requestBody,
-                imageMultipart = multipartBody
+                imageMultipart = multipartBody,
+                lat = currentLat,
+                lon = currentLon
             )
 
         } ?: showToast(getString(R.string.msg_empty_image))

@@ -9,6 +9,7 @@ import com.dicoding.dicodingstoryapp.ui.auth.LoginViewModel
 import com.dicoding.dicodingstoryapp.ui.auth.RegisterViewModel
 import com.dicoding.dicodingstoryapp.ui.home.HomeViewModel
 import com.dicoding.dicodingstoryapp.ui.main.MainViewModel
+import com.dicoding.dicodingstoryapp.ui.maps.MapsViewModel
 import com.dicoding.dicodingstoryapp.ui.splash.SplashViewModel
 import com.dicoding.dicodingstoryapp.ui.story.AddStoryViewModel
 import com.dicoding.dicodingstoryapp.ui.story.DetailStoryViewModel
@@ -41,6 +42,11 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(AddStoryViewModel::class.java) -> {
                 AddStoryViewModel(repository) as T
             }
+            modelClass.isAssignableFrom(MapsViewModel::class.java) -> {
+                MapsViewModel(repository) as T
+            }
+
+
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }

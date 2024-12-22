@@ -10,6 +10,8 @@
     <string name="language">Bahasa</string>
     <string name="language_desc">Ubah bahasa aplikasi</string>
     <string name="logout">Keluar</string>
+    <string name="location_switch">Lokasi</string>
+    <string name="refresh">Segarkan</string>
 
     <string name="gallery">Galeri</string>
     <string name="camera">Kamera</string>
@@ -56,4 +58,14 @@
 
     <string name="permission_request_granted">Permintaan izin disetujui</string>
     <string name="permission_request_denied">Permintaan izin ditolak</string>
+    <string name="title_activity_maps">MapsActivity</string>
+
+    <string name="all_permissions_granted">Semua izin diberikan</string>
+    <string name="camera_permission_denied">Izin kamera ditolak</string>
+    <string name="location_permission_denied">Izin lokasi ditolak</string>
+    <string name="all_permissions_denied">Semua izin ditolak</string>
+    <string name="location_acquired">Lokasi berhasil diperoleh</string>
+    <string name="location_not_found">Lokasi tidak ditemukan</string>
+    <string name="camera_error">Terjadi kesalahan dengan kamera</string>
+
 </resources>

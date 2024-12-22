@@ -32,6 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/previewImageLayout"
         android:layout_width="300dp"
@@ -77,6 +78,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/previewImageLayout"/>
 
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/locationSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/location_switch"
+        android:layout_marginStart="16dp"
+        app:switchPadding="8dp"
+        app:thumbTint="@color/grey_700"
+        app:layout_constraintTop_toBottomOf="@id/btnCamera"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/descriptionLayout"
         android:layout_width="300dp"
@@ -84,19 +96,22 @@
         app:layout_constraintTop_toBottomOf="@id/btnCamera"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp">
+        android:layout_marginTop="54dp">
 
         <EditText
             android:id="@+id/descriptionInput"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:hint="@string/tv_hint_description"
+            android:gravity="top|start"
             android:inputType="text"
-            android:gravity="top"
+            android:minLines="5"
+            android:scrollbars="vertical"
             android:padding="16dp"
             android:background="@android:color/transparent"
             android:textSize="16sp"
-            android:textColorHint="@color/grey_500" />
+            android:textColorHint="@color/grey_500"
+            android:overScrollMode="always" />
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -107,7 +122,7 @@
         app:layout_constraintTop_toBottomOf="@id/descriptionLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:text="@string/tv_upload"/>
 
     <ProgressBar

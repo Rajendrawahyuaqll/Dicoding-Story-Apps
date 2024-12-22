@@ -10,6 +10,8 @@
     <string name="language">Language</string>
     <string name="language_desc">Change apps language</string>
     <string name="logout">Logout</string>
+    <string name="location_switch">Location</string>
+    <string name="refresh">Refresh</string>
 
     <string name="gallery">Gallery</string>
     <string name="camera">Camera</string>
@@ -56,6 +58,15 @@
 
     <string name="permission_request_granted">Permission request granted</string>
     <string name="permission_request_denied">Permission request denied</string>
+    <string name="title_activity_maps">MapsActivity</string>
+
+    <string name="all_permissions_granted">All permissions granted</string>
+    <string name="camera_permission_denied">Camera permission denied</string>
+    <string name="location_permission_denied">Location permission denied</string>
+    <string name="all_permissions_denied">All permissions denied</string>
+    <string name="location_acquired">Location successfully acquired</string>
+    <string name="location_not_found">Location not found</string>
+    <string name="camera_error">An error occurred with the camera</string>
 
 
 </resources>

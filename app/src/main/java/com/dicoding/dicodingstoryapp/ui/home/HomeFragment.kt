@@ -2,19 +2,22 @@ package com.dicoding.dicodingstoryapp.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dicoding.dicodingstoryapp.LoadingStateAdapter
 import com.dicoding.dicodingstoryapp.R
 import com.dicoding.dicodingstoryapp.ViewModelFactory
 import com.dicoding.dicodingstoryapp.databinding.FragmentHomeBinding
+import com.dicoding.dicodingstoryapp.ui.maps.MapsActivity
 import com.dicoding.dicodingstoryapp.ui.settings.SettingsActivity
 import com.dicoding.dicodingstoryapp.ui.story.AddStoryActivity
 import com.dicoding.dicodingstoryapp.ui.story.DetailStoryActivity
-import com.dicoding.dicodingstoryapp.ui.story.StoryAdapter
+import com.dicoding.dicodingstoryapp.StoryAdapter
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -45,18 +48,31 @@ class HomeFragment : Fragment() {
             navigateToAddStory()
         }
 
+        _binding?.btnMaps?.setOnClickListener{
+            navigateToMaps()
+        }
+
         _binding?.setting?.setOnClickListener {
             navigateToSetting()
         }
 
+        with(binding) {
+            rvStory.layoutManager = LinearLayoutManager(requireContext())
+            rvStory.adapter = adapter.withLoadStateHeaderAndFooter(
+                header = LoadingStateAdapter { adapter.retry() },
+                footer = LoadingStateAdapter { adapter.retry() }
+            )
+        }
+
         with(viewModel) {
-            listStory.observe(viewLifecycleOwner) { stories ->
-                adapter.submitList(stories)
-                binding.rvStory.visibility = View.VISIBLE
-            }
+            getStoriesWithToken()
 
             isLoading.observe(viewLifecycleOwner) { isLoading ->
                 showLoading(isLoading)
+            }
+            listStory.observe(viewLifecycleOwner) {
+                Log.d("HomeFragment", "List Story: $it")
+                adapter.submitData(lifecycle, it)
             }
         }
     }
@@ -86,5 +102,10 @@ class HomeFragment : Fragment() {
 
     private fun navigateToDetail(id: String){
         DetailStoryActivity.start(requireContext(), id)
+    }
+
+    private fun navigateToMaps(){
+       val intent = Intent(requireContext(), MapsActivity::class.java)
+        startActivity(intent)
     }
 }
